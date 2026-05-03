@@ -13,6 +13,7 @@ import numpy as np
 from bearingdyn.geometry import BearingGeometry, roller_angles
 from bearingdyn.postprocess import single_sided_fft
 from bearingdyn.solver import bearing_reaction_force
+from bearingdyn.visualization import plot_force_time_history, plot_spectrum
 
 
 def simulate_force_signal(
@@ -70,6 +71,24 @@ def main() -> None:
     peak_index = 1 + int(np.argmax(amp_x[1:]))
     print(f"Dominant Fx frequency: {freq[peak_index]:.3f} Hz")
     print(f"Dominant Fx amplitude: {amp_x[peak_index]:.6f} N")
+
+    plot_force_time_history(
+        time,
+        force_x,
+        force_y,
+        title="Bearing reaction force history",
+        output_path="outputs/time_force_history.png",
+        show=True,
+    )
+
+    plot_spectrum(
+        freq,
+        amp_x,
+        title="Bearing reaction force spectrum",
+        xlim=(0.0, 1000.0),
+        output_path="outputs/time_force_spectrum.png",
+        show=True,
+    )
 
 
 if __name__ == "__main__":
