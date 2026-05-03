@@ -15,7 +15,8 @@ The first development stage focuses on a minimal two-dimensional bearing model:
 - Hertzian normal contact,
 - optional contact damping,
 - bearing reaction force prediction,
-- time-domain and frequency-domain post-processing.
+- time-domain and frequency-domain post-processing,
+- result visualization for force histories, spectra, and rolling-element load distributions.
 
 ## Development philosophy
 
@@ -63,9 +64,21 @@ python examples/04_outer_race_defect_signal.py
 ## Current examples
 
 - `01_single_roller_contact.py`: scalar Hertzian contact force under different indentations.
-- `02_basic_load_distribution.py`: rolling-element load distribution under a prescribed shaft offset.
-- `03_time_domain_force_signal.py`: prescribed rolling-element train rotation, nonlinear force history, and FFT peak detection.
-- `04_outer_race_defect_signal.py`: localized outer-race defect modeled as a clearance increase, with healthy/defected spectrum comparison.
+- `02_basic_load_distribution.py`: rolling-element load distribution under a prescribed shaft offset. Saves `outputs/load_distribution.png`.
+- `03_time_domain_force_signal.py`: prescribed rolling-element train rotation, nonlinear force history, and FFT peak detection. Saves `outputs/time_force_history.png` and `outputs/time_force_spectrum.png`.
+- `04_outer_race_defect_signal.py`: localized outer-race defect modeled as a clearance increase, with healthy/defected spectrum comparison. Saves `outputs/outer_race_defect_time_history.png` and `outputs/outer_race_defect_spectrum.png`.
+
+## Visualization utilities
+
+The package includes plotting helpers in `bearingdyn.visualization`:
+
+- `plot_force_time_history`
+- `plot_spectrum`
+- `plot_dual_force_time_history`
+- `plot_dual_spectrum`
+- `plot_roller_load_distribution`
+
+These functions can either show figures interactively or save them to disk. The examples save figures under the ignored `outputs/` folder.
 
 ## Current limitations
 
