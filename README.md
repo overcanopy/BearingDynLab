@@ -34,3 +34,37 @@ The first development stage focuses on a minimal two-dimensional bearing model:
 - **M5:** Local defects on outer race, inner race, and rollers.
 - **M6:** Rotor-bearing coupling with a Jeffcott rotor.
 - **M7:** Cage dynamics and roller-pocket contact.
+
+## Quick start
+
+Clone the repository and install it in editable mode:
+
+```bash
+git clone https://github.com/overcanopy/BearingDynLab.git
+cd BearingDynLab
+pip install -e ".[dev]"
+```
+
+Run the tests:
+
+```bash
+pytest
+```
+
+Run the first examples:
+
+```bash
+python examples/01_single_roller_contact.py
+python examples/02_basic_load_distribution.py
+python examples/03_time_domain_force_signal.py
+```
+
+## Current examples
+
+- `01_single_roller_contact.py`: scalar Hertzian contact force under different indentations.
+- `02_basic_load_distribution.py`: rolling-element load distribution under a prescribed shaft offset.
+- `03_time_domain_force_signal.py`: prescribed rolling-element train rotation, nonlinear force history, and FFT peak detection.
+
+## Current limitations
+
+The current code does not yet solve full multibody roller-bearing dynamics. The rolling-element train motion is prescribed in the first time-domain example. Future versions should introduce shaft dynamics, cage dynamics, roller translational/rotational degrees of freedom, friction, defects, and experimental validation cases.
