@@ -57,6 +57,7 @@ Run the first examples:
 python examples/01_single_roller_contact.py
 python examples/02_basic_load_distribution.py
 python examples/03_time_domain_force_signal.py
+python examples/04_outer_race_defect_signal.py
 ```
 
 ## Current examples
@@ -64,7 +65,8 @@ python examples/03_time_domain_force_signal.py
 - `01_single_roller_contact.py`: scalar Hertzian contact force under different indentations.
 - `02_basic_load_distribution.py`: rolling-element load distribution under a prescribed shaft offset.
 - `03_time_domain_force_signal.py`: prescribed rolling-element train rotation, nonlinear force history, and FFT peak detection.
+- `04_outer_race_defect_signal.py`: localized outer-race defect modeled as a clearance increase, with healthy/defected spectrum comparison.
 
 ## Current limitations
 
-The current code does not yet solve full multibody roller-bearing dynamics. The rolling-element train motion is prescribed in the first time-domain example. Future versions should introduce shaft dynamics, cage dynamics, roller translational/rotational degrees of freedom, friction, defects, and experimental validation cases.
+The current code does not yet solve full multibody roller-bearing dynamics. The rolling-element train motion is prescribed in the first time-domain examples. The first defect model is a simplified local clearance increase rather than a detailed geometric contact-impact model. Future versions should introduce shaft dynamics, cage dynamics, roller translational/rotational degrees of freedom, friction, inner-race and roller defects, and experimental validation cases.
