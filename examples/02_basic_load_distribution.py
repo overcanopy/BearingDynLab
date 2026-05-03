@@ -4,6 +4,7 @@ import numpy as np
 
 from bearingdyn.geometry import BearingGeometry, roller_angles
 from bearingdyn.solver import bearing_reaction_force
+from bearingdyn.visualization import plot_roller_load_distribution
 
 
 def main() -> None:
@@ -27,6 +28,14 @@ def main() -> None:
     print(f"Bearing reaction force: Fx = {fx:.3f} N, Fy = {fy:.3f} N")
     print("Rolling-element normal forces:")
     print(np.array2string(normal_forces, precision=3, suppress_small=True))
+
+    plot_roller_load_distribution(
+        angles,
+        normal_forces,
+        title="Rolling-element load distribution",
+        output_path="outputs/load_distribution.png",
+        show=True,
+    )
 
 
 if __name__ == "__main__":
