@@ -13,6 +13,7 @@ from bearingdyn.defects import OuterRaceDefect
 from bearingdyn.geometry import BearingGeometry, contact_indentations, roller_angles
 from bearingdyn.postprocess import single_sided_fft
 from bearingdyn.solver import bearing_reaction_force
+from bearingdyn.visualization import plot_dual_force_time_history, plot_dual_spectrum
 
 
 def bearing_reaction_force_with_outer_defect(
@@ -108,6 +109,25 @@ def main() -> None:
     print(f"Amplitude near expected BPFO-like frequency ({target_frequency:.1f} Hz):")
     print(f"  healthy:  {healthy_amp[target_index]:.6f} N")
     print(f"  defected: {defect_amp[target_index]:.6f} N")
+
+    plot_dual_force_time_history(
+        time,
+        healthy_fx,
+        defect_fx,
+        title="Healthy vs defected force history",
+        output_path="outputs/outer_race_defect_time_history.png",
+        show=True,
+    )
+
+    plot_dual_spectrum(
+        freq,
+        healthy_amp,
+        defect_amp,
+        title="Healthy vs defected spectrum",
+        xlim=(0.0, 1200.0),
+        output_path="outputs/outer_race_defect_spectrum.png",
+        show=True,
+    )
 
 
 if __name__ == "__main__":
